@@ -418,11 +418,9 @@
         <div class="form-grid">
           <div class="form-group"><label>👤 Full Name *</label><input type="text" id="fullName" placeholder="Your name"><div class="error-msg" id="nameError">⚠️ Name required</div></div>
           <div class="form-group"><label>🎂 Age *</label><input type="number" id="age" placeholder="Your age" min="12" max="100"><div class="error-msg" id="ageError">⚠️ Valid age required (12-100)</div></div>
-          <div class="form-group"><label>⚧ Gender *</label><select id="gender"><option value="">Select gender</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select><div class="error-msg" id="genderError">⚠️ Please select gender</div></div>
-          <div class="form-group"><label>📍 Location / Address *</label><input type="text" id="location" placeholder="Complete address"><div class="error-msg" id="locationError">⚠️ Location required</div></div>
+          <div class="form-group full-width"><label>📍 Location / Address *</label><input type="text" id="location" placeholder="Complete address"><div class="error-msg" id="locationError">⚠️ Location required</div></div>
           <div class="form-group full-width"><label>📱 Phone (optional)</label><input type="tel" id="phone" placeholder="Contact number"></div>
-          <div class="form-group full-width"><label>🩹 Any Injury? *</label><select id="injury" onchange="toggleInjuryDetails()"><option value="">Select option</option><option value="No">No</option><option value="Yes">Yes</option></select><div class="error-msg" id="injuryError">⚠️ Please select an option</div></div>
-          <div class="form-group full-width" id="injuryDetailsGroup" style="display:none;"><label>📝 Please describe your injury *</label><textarea id="injuryDetails" rows="2" placeholder="e.g. lower back pain, knee injury, recent surgery..."></textarea><div class="error-msg" id="injuryDetailsError">⚠️ Please describe your injury</div></div>
+          <div class="form-group full-width"><label>🩹 Any Injury / Health Issue (optional)</label><textarea id="injuryDetails" rows="2" placeholder="Please describe any injury, pain, or health condition..."></textarea><div class="error-msg" id="injuryDetailsError" style="display:none;">⚠️ Please describe your injury</div></div>
           <div class="form-group full-width"><label>📅 Preferred Date & Time *</label><input type="datetime-local" id="dateTime"><div class="error-msg" id="dateError">⚠️ Select date & time</div></div>
           <div class="form-group full-width"><label>📝 Any Special Requirements (optional)</label><textarea id="notes" rows="2" placeholder="Any preferences..."></textarea></div>
         </div>
@@ -580,7 +578,6 @@
       if (selectedServiceType === 'parlour') document.getElementById('location').value = 'PK Massage Lab Studio, Durgakund, Varanasi';
       const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
       document.getElementById('dateTime').min = now.toISOString().slice(0,16);
-      document.getElementById('injuryDetailsGroup').style.display = 'none';
       updateTotalDisplay();
       document.getElementById('detailView').style.display = 'none';
       document.getElementById('bookingPage').style.display = 'block';
@@ -593,23 +590,10 @@
     }
 
     function hideAllErrors() {
-      ['nameError','locationError','dateError','serviceTypeError','ageError','genderError','injuryError','injuryDetailsError'].forEach(id => {
+      ['nameError','locationError','dateError','serviceTypeError','ageError','injuryDetailsError'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display='none';
       });
-    }
-
-    function toggleInjuryDetails() {
-      const injury = document.getElementById('injury').value;
-      const group = document.getElementById('injuryDetailsGroup');
-      const details = document.getElementById('injuryDetails');
-      if (injury === 'Yes') {
-        group.style.display = 'block';
-      } else {
-        group.style.display = 'none';
-        details.value = '';
-        document.getElementById('injuryDetailsError').style.display = 'none';
-      }
     }
 
     function validateFullPage() {
@@ -619,30 +603,16 @@
       const location = document.getElementById('location').value.trim();
       const dateTime = document.getElementById('dateTime').value;
       const age = parseInt(document.getElementById('age').value);
-      const gender = document.getElementById('gender').value;
-      const injury = document.getElementById('injury').value;
-      const injuryDetails = document.getElementById('injuryDetails').value.trim();
 
       document.getElementById('nameError').style.display = name ? 'none' : 'block';
       document.getElementById('locationError').style.display = location ? 'none' : 'block';
       document.getElementById('dateError').style.display = dateTime ? 'none' : 'block';
       document.getElementById('ageError').style.display = (age && age >= 12 && age <= 100) ? 'none' : 'block';
-      document.getElementById('genderError').style.display = gender ? 'none' : 'block';
-      document.getElementById('injuryError').style.display = injury ? 'none' : 'block';
-
-      if (injury === 'Yes') {
-        document.getElementById('injuryDetailsError').style.display = injuryDetails ? 'none' : 'block';
-        if (!injuryDetails) valid = false;
-      } else {
-        document.getElementById('injuryDetailsError').style.display = 'none';
-      }
 
       if(!name) valid=false;
       if(!location) valid=false;
       if(!dateTime) valid=false;
       if(!age || age < 12 || age > 100) valid=false;
-      if(!gender) valid=false;
-      if(!injury) valid=false;
       return valid;
     }
 
@@ -659,8 +629,6 @@
       const dateTime = document.getElementById('dateTime').value;
       const notes = document.getElementById('notes').value.trim();
       const age = document.getElementById('age').value.trim();
-      const gender = document.getElementById('gender').value;
-      const injury = document.getElementById('injury').value;
       const injuryDetails = document.getElementById('injuryDetails').value.trim();
 
       const formattedDate = formatDate(dateTime);
@@ -669,11 +637,10 @@
       const savings = originalTotal - discountedTotal;
       const serviceTypeLabel = selectedServiceType === 'home' ? '🏠 Home Service' : '🏪 Centre Visit';
 
-      let msg = `✨ *NEW BOOKING — PK MASSAGE LAB* ✨\n\n👤 *Name:* ${name}\n🎂 *Age:* ${age}\n⚧ *Gender:* ${gender}\n📍 *Location:* ${location}\n`;
+      let msg = `✨ *NEW BOOKING — PK MASSAGE LAB* ✨\n\n👤 *Name:* ${name}\n🎂 *Age:* ${age}\n📍 *Location:* ${location}\n`;
       if(phone) msg += `📱 *Phone:* ${phone}\n`;
       msg += `\n💆‍♂️ *Service:* ${currentService.name}\n📋 *Service Type:* ${serviceTypeLabel}\n📅 *Schedule:* ${formattedDate}\n`;
-      msg += `\n🩹 *Any Injury:* ${injury}\n`;
-      if (injury === 'Yes') msg += `📝 *Injury Details:* ${injuryDetails}\n`;
+      if (injuryDetails) msg += `\n🩹 *Injury / Health Issue:* ${injuryDetails}\n`;
       msg += `\n🔥 *OFFER APPLIED: 18% OFF*\n`;
       if (selectedServiceType === 'home') {
         msg += `\n💵 *Original:* ₹${currentService.price} + ₹${HOME_CHARGE} = ₹${originalTotal}\n`;
