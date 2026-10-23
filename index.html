@@ -99,120 +99,6 @@
     .address-note { font-size: 0.85rem; color: #6a5f7c; text-align: center; padding: 0 1rem 0.6rem; line-height: 1.5; }
     .content-wrapper { padding: 0.5rem 2.2rem 2.5rem 2.2rem; }
     
-    /* ========== PREMIUM FESTIVE OFFER BANNER CSS ========== */
-    .festive-offer-banner {
-      position: relative;
-      background: linear-gradient(135deg, #4a0e2e 0%, #7a1b38 50%, #4a0e2e 100%);
-      border: 2px solid #d4af37;
-      border-radius: 24px;
-      margin: 1.5rem 0 2rem 0;
-      padding: 2rem;
-      text-align: center;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25), inset 0 0 20px rgba(212, 175, 55, 0.15);
-      animation: pulseGlow 3s infinite alternate;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .festive-offer-banner::before {
-      content: "";
-      position: absolute;
-      top: 0; left: -150%; width: 50%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5), transparent);
-      transform: skewX(-25deg);
-      animation: shineSweep 5s infinite;
-    }
-    .offer-badge {
-      display: inline-block;
-      background: linear-gradient(90deg, #d4af37, #ffdf00, #d4af37);
-      background-size: 200% auto;
-      color: #3b0d1e;
-      font-weight: 800;
-      padding: 0.4rem 1.5rem;
-      border-radius: 30px;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
-      animation: gradientShine 3s linear infinite;
-    }
-    .offer-title {
-      color: #fff;
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.5px;
-    }
-    .offer-highlight {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #ffdf00;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 4px 15px rgba(255, 223, 0, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .free-text {
-      background: #ff1a55;
-      color: white;
-      padding: 2px 12px;
-      border-radius: 8px;
-      display: inline-block;
-      transform: rotate(-3deg);
-      box-shadow: 0 4px 10px rgba(255, 26, 85, 0.5);
-      border: 1px solid #ff7b9f;
-    }
-    .offer-dates {
-      color: #f7e6f0;
-      font-size: 1.1rem;
-      margin-bottom: 1.8rem;
-      font-weight: 500;
-      background: rgba(0,0,0,0.2);
-      padding: 0.4rem 1.2rem;
-      border-radius: 20px;
-    }
-    .claim-offer-btn {
-      background: linear-gradient(115deg, #d4af37, #ff9900);
-      border: 2px solid #ffdf00;
-      padding: 1.2rem 3rem;
-      border-radius: 50px;
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: #2b0a18;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      z-index: 2;
-    }
-    .claim-offer-btn:hover {
-      transform: scale(1.06) translateY(-4px);
-      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.7);
-      background: linear-gradient(115deg, #ffdf00, #ffaa00);
-    }
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15), inset 0 0 15px rgba(212, 175, 55, 0.05); }
-      100% { box-shadow: 0 15px 45px rgba(212, 175, 55, 0.4), inset 0 0 30px rgba(212, 175, 55, 0.2); }
-    }
-    @keyframes shineSweep {
-      0% { left: -150%; }
-      20% { left: 200%; }
-      100% { left: 200%; }
-    }
-    @keyframes gradientShine {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
-    }
-    /* ==================================================== */
-
     .search-container { margin: 1rem 0 0.5rem; display: flex; justify-content: center; }
     .search-input-wrapper { width: 100%; max-width: 500px; position: relative; }
     .search-input { width: 100%; padding: 0.9rem 1.2rem 0.9rem 3rem; border: 2px solid #e1d5f5; border-radius: 50px; font-size: 1rem; outline: none; background: white; box-shadow: var(--shadow-card); font-family: inherit; }
@@ -312,12 +198,6 @@
       .detail-title { font-size: 1.9rem; } .service-type-selector { flex-direction: column; }
       .social-icon { padding: 0.4rem 1rem; font-size: 0.85rem; }
       .tagline { font-size: 1rem; }
-      /* Mobile Offer Banner */
-      .festive-offer-banner { margin: 1rem 0 1.5rem; padding: 1.5rem 1rem; border-radius: 20px; }
-      .offer-highlight { font-size: 1.4rem; flex-direction: column; gap: 5px; }
-      .offer-title { font-size: 1.3rem; }
-      .claim-offer-btn { padding: 1rem 2rem; font-size: 1.1rem; width: 100%; }
-      .offer-badge { font-size: 0.8rem; padding: 0.3rem 1.2rem; }
     }
   </style>
 </head>
@@ -390,16 +270,6 @@
       <div class="badge-row">
         <span class="badge">⭐ 5.0 Rating</span> <span class="badge">🏆 Certified Experts</span> <span class="badge">💯 Satisfaction Guarantee</span> <span class="badge">🎁 Free consultation</span>
       </div>
-
-      <!-- ========== NAVRATRI & DUSSEHRA PREMIUM BANNER ========== -->
-      <div class="festive-offer-banner">
-        <div class="offer-badge">Navratri & Dussehra Special</div>
-        <h3 class="offer-title">🔥 Book a 60 Min Full Body Massage</h3>
-        <div class="offer-highlight">🎁 Get FACE D-TAN <span class="free-text">ABSOLUTELY FREE</span></div>
-        <p class="offer-dates">📅 Limited Period Only: <strong>11th to 21st Oct</strong></p>
-        <button class="claim-offer-btn" onclick="claimOffer()">Claim Offer Now</button>
-      </div>
-      <!-- ========================================================= -->
 
       <div class="search-container"><div class="search-input-wrapper"><span class="search-icon">🔍</span><input type="text" id="searchInput" class="search-input" placeholder="Search services (e.g. back pain, stone, cupping...)" oninput="filterServices()" aria-label="Search massage services"></div></div>
       <div class="no-results" id="noResults">😔 No services found matching your search. Try different keywords.</div>
@@ -539,44 +409,6 @@
     let currentService = { name: '', price: 0, serviceNameKey: '', duration: '' };
     let selectedServiceType = null;
 
-    // ========== SPECIAL OFFER FUNCTION ==========
-    function claimOffer() {
-      // We'll base the offer on the Swedish Full Body, or just hardcode the offer details
-      const serviceKey = 'Swedish Full Body (60 min)';
-      const info = serviceInfoMap[serviceKey];
-      
-      currentService.serviceNameKey = serviceKey;
-      currentService.price = 799; // Standard price for the massage
-      currentService.name = "60 Min Full Body + FREE Face D-Tan";
-      currentService.duration = "60 min + 20 min Free";
-      
-      document.getElementById('detailImage').src = info.img;
-      document.getElementById('detailTitle').innerText = currentService.name;
-      document.getElementById('detailDuration').innerText = currentService.duration;
-      document.getElementById('detailPrice').innerText = '₹799';
-      
-      // Update description with excitement!
-      document.getElementById('detailDesc').innerHTML = `<strong>🎉 NAVRATRI & DUSSEHRA SPECIAL:</strong> Book this soothing 60-Minute Full Body Massage and get our premium Face D-Tan Treatment (Worth ₹499) absolutely FREE! <br><br> <em>Includes: Classic relaxation massage with long strokes + Papaya-honey Face D-Tan mask.</em>`;
-      
-      document.getElementById('detailBenefits').innerText = info.benefits + " + Glowing, detanned facial skin instantly!";
-      
-      selectedServiceType = null;
-      document.querySelectorAll('.service-type-option').forEach(opt => opt.classList.remove('selected'));
-      document.getElementById('serviceTypeError').style.display = 'none';
-      document.getElementById('feeNote').innerText = '🏠 Home service fee ₹199 extra';
-      document.getElementById('totalPriceDisplay').innerText = '💰 Total: ₹' + currentService.price;
-      
-      // Auto-fill the notes field so you know they claimed it!
-      document.getElementById('notes').value = "Navratri Offer: Claiming FREE Face D-Tan with 60 Min Full Body Massage!";
-      
-      hideAllErrors();
-      document.getElementById('mainView').style.display = 'none';
-      document.getElementById('detailView').style.display = 'block';
-      document.getElementById('bookingPage').style.display = 'none';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    // ===========================================
-
     function filterServices() {
       const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
       const cards = document.querySelectorAll('.service-card');
@@ -637,7 +469,7 @@
       document.getElementById('detailDesc').innerText = info.desc;
       document.getElementById('detailBenefits').innerText = info.benefits;
       
-      // Clear notes if they clicked a normal service
+      // Clear notes when clicking a normal service
       document.getElementById('notes').value = ""; 
 
       selectedServiceType = null;
